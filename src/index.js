@@ -12,8 +12,9 @@ function makeupSelect() {
     loader.classList.remove('hide');
     fetchBreeds()
         .then(data => {
-            loader.classList.add('hide');
-            selectCat.innerHTML = data.map(({ name, id }) => `<option value="${id}">${name}</option>`).join('');
+          loader.classList.add('hide');
+          selectCat.innerHTML = data.map(({ name, id }) => `<option value="${id}">${name}</option>`).join('');
+          selectCat.classList.remove('hide');
       })
         .catch(() => {
             loader.classList.add('hide');
@@ -24,6 +25,7 @@ function makeupSelect() {
 makeupSelect() 
 
 function showInfoCat() {
+  catInfoEl.innerHTML = '';
     loader.classList.remove('hide');
     fetchCatByBreed(selectCat.value)
       .then(data => {
